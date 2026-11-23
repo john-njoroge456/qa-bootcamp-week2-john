@@ -69,3 +69,15 @@ Run these steps in order from a terminal.
 
 - `npm run check`: checks your `.env` and that you can reach the Toolshop API.
 - `npm test`: runs the Playwright tests in `tests/`.
+## Week 2 – Day 6: TypeScript basics
+
+- `src/ts-basics/objects.ts` – typing objects with interfaces, including
+  `readonly` and optional properties.
+- `src/ts-basics/optional-chaining.ts` – reading nested values safely with
+  optional chaining (`?.`) and default values with `??`, so missing data
+  doesn't crash the code.
+- `src/profile-validator.ts` – the practical exercise: a typed validator that
+  checks a user profile and handles missing or empty fields.
+
+### How to run
+npx tsx src/profile-validator.ts
