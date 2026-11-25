@@ -65,7 +65,17 @@ Run these steps in order from a terminal.
 | `tests/`   | Your Playwright tests. It is empty for now; you will add tests during the week. |
 | `scripts/` | Helper scripts. `check.ts` checks your setup and is run by `npm run check`. |
 
-## Scripts
+## Week 2 – Day 6: TypeScript basics
 
-- `npm run check`: checks your `.env` and that you can reach the Toolshop API.
-- `npm test`: runs the Playwright tests in `tests/`.
+- `src/ts-basics/objects.ts` – typing an object inline: a `readonly` id,
+  a string name, and a method (`retire`) that takes a `Date`.
+- `src/ts-basics/optional-chaining.ts` – a function that can return a
+  customer, `null` or `undefined`, and reading `birthday` safely with `?.`
+  so a missing customer doesn't crash the code.
+- `src/profile-validator.ts` – the practical exercise: a `User` type with
+  optional nested settings, and a function that checks whether notifications
+  are enabled. It uses `?.` and `??` so it returns `false` instead of crashing
+  when settings are missing or empty. Tested on four users, including one who turned notifications off.
+
+### How to run
+npx tsx src/profile-validator.ts
