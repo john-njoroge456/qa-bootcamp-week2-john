@@ -20,7 +20,7 @@ export class Homepage{
         await this.searchButton.click();
         
     }
-    seachResults (term :string): Locator {
+    searchResults (term :string): Locator {
         return this.page.getByText(`Searched for: ${term}`);
     }
 }
