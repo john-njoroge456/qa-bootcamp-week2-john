@@ -3,9 +3,11 @@
   "private": true,
   "scripts": {
     "check": "tsx scripts/check.ts",
-    "test": "playwright test --pass-with-no-tests"
+    "test": "playwright test --pass-with-no-tests",
+    "bdd": "cucumber-js --require-module tsx/cjs --require 'features/step_definitions/*.ts' --tags @automated"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^13.3.0",
     "@playwright/test": "1.65.1",
     "@types/node": "26.6.6",
     "dotenv": "18.0.10",

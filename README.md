@@ -61,7 +61,7 @@ Optional: `npm run check` checks your setup by calling the Toolshop API and prin
 |-------------|----------------|
 | `tests/`    | The Playwright tests (UI and API). |
 | `pages/`    | Page objects. `home-page.ts` holds the home page's search locators and actions. |
-| `features/` | Plain-English feature files (Given/When/Then). Not automated. |
+| `features/` | Feature files (Given/When/Then) and their Cucumber step definitions. One scenario is automated.  |
 | `src/`      | Day 6 TypeScript practice files. |
 | `scripts/`  | Helper scripts. `check.ts` checks your setup and is run by `npm run check`. |
 
@@ -78,7 +78,15 @@ Optional: `npm run check` checks your setup by calling the Toolshop API and prin
 
 The tests run against the shared Toolshop site, so an occasional failure can come from the site being down rather than from the tests.
 
-**Not included:** the optional Cucumber-js scenario. `features/cart.feature` is a plain-English description only.
+## BDD scenario (Cucumber)
+
+One scenario in `features/cart.feature`, "Shopper adds one product to the cart", is tagged `@automated` and connected to step definitions in `features/step_definitions/cart.steps.ts`. Run it with:
+
+```bash
+npm run bdd
+```
+
+The other two scenarios are descriptions only and are not automated yet.
 
 ## Week 2 – Day 6: TypeScript basics
 

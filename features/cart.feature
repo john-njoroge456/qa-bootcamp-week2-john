@@ -1,3 +1,5 @@
+ 
+
 Feature: Shopping cart
   As a shopper, I want to add products to my cart
   so that I can see what I'm buying and what it will cost.
@@ -5,7 +7,7 @@ Feature: Shopping cart
   Background:
     Given the shopper is on the Toolshop home page
     And the cart is empty
-
+  @automated  
   Scenario: Shopper adds one product to the cart
     When the shopper opens the Bolt Cutters product page
     And adds it to the cart
