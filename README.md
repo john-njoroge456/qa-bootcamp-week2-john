@@ -1,13 +1,13 @@
-# QA Bootcamp Week 2 Starter
+# QA Bootcamp Week 2
 
-This is the starting point for Week 2 of the QA bootcamp. During the week you will use it to practise:
+This is my repo for Week 2 of the QA bootcamp. During the week I used it to practise:
 
 - TypeScript
 - Playwright (UI testing)
 - Postman (API testing)
 - The Toolshop REST API
 
-There are no tests in this repo. You will write them during the week.
+It now holds my Week 2 test suite: UI and API tests for Toolshop, all run together with `npm test`.
 
 ## Prerequisites
 
@@ -19,51 +19,66 @@ Install these before you start:
 
 ## Setup
 
-Run these steps in order from a terminal.
+First clone the repo and open the folder:
 
-1. Clone the repo and open the folder:
+```bash
+git clone https://github.com/john-njoroge456/qa-bootcamp-week2-john.git
+cd qa-bootcamp-week2-john
+```
 
-   ```bash
-   git clone <repo-url>
-   cd qa-bootcamp-week2-starter
-   ```
+Then:
 
-2. Install the dependencies:
+1. Install the dependencies and the Chromium browser:
 
-   ```bash
+```bash
    npm install
-   ```
-
-3. Install the Chromium browser for Playwright:
-
-   ```bash
    npx playwright install chromium
-   ```
+```
 
-4. Copy `.env.example` to `.env`:
+2. Copy `.env.example` to `.env`:
 
-   ```bash
+```bash
    cp .env.example .env
-   ```
+```
 
    `.env` already contains the Toolshop website URL (`TOOLSHOP_URL`) and the Toolshop API URL (`TOOLSHOP_API_URL`). Only change them if your trainer gives you different URLs.
 
-5. Check that your setup works:
+3. Run the tests:
 
-   ```bash
-   npm run check
-   ```
+```bash
+   npm test
+```
 
-   This sends a GET request to the Toolshop API's `/products` endpoint (no login needed). If everything is set up correctly, it prints your Node version, the HTTP status (200), the number of products, and a last line that says `PASS`.
+   All tests should pass.
+
+Optional: `npm run check` checks your setup by calling the Toolshop API and printing `PASS`.
 
 > **Warning:** never commit `.env`. It is where your own settings and, later in the course, your secrets (keys, tokens, passwords) live. It is listed in `.gitignore` so Git ignores it. Do not remove it from there.
 
 ## Folders
 
-| Folder     | What it is for |
-|------------|----------------|
-| `tests/`   | Your Playwright tests. It is empty for now; you will add tests during the week. |
-| `scripts/` | Helper scripts. `check.ts` checks your setup and is run by `npm run check`. |
+| Folder      | What it is for |
+|-------------|----------------|
+| `tests/`    | The Playwright tests (UI and API). |
+| `pages/`    | Page objects. `home-page.ts` holds the home page's search locators and actions. |
+| `features/` | Plain-English feature files (Given/When/Then). Not automated. |
+| `src/`      | Day 6 TypeScript practice files. |
+| `scripts/`  | Helper scripts. `check.ts` checks your setup and is run by `npm run check`. |
+
+## What's in the suite
+
+| File | What it tests |
+|---|---|
+| `tests/toolshop.spec.ts` | UI: the home page title |
+| `tests/item_pliers.spec.ts` | UI: a search for "pliers" shows only pliers products |
+| `tests/invalid_login.spec.ts` | UI: a wrong login shows "Invalid email or password" |
+| `tests/search.spec.ts` | UI: the pliers search, written through the `Homepage` page object |
+| `tests/api_products.spec.ts` | API: GET /products returns 200 and the first page |
+| `tests/api_carts.spec.ts` | API: create a cart and add a product; a missing cart returns 404. Any cart a test creates is deleted afterwards. |
+
+The tests run against the shared Toolshop site, so an occasional failure can come from the site being down rather than from the tests.
+
+**Not included:** the optional Cucumber-js scenario. `features/cart.feature` is a plain-English description only.
 
 ## Week 2 – Day 6: TypeScript basics
 
@@ -78,4 +93,7 @@ Run these steps in order from a terminal.
   when settings are missing or empty. Tested on four users, including one who turned notifications off.
 
 ### How to run
+
+```bash
 npx tsx src/profile-validator.ts
+```
