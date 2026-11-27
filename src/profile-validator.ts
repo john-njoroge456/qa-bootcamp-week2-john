@@ -6,14 +6,14 @@ type User={
         notifications?:boolean
     }
 };
-let user1:User= {id:1,username:'John_Doe', settings:{notifications:true}};
-let user2:User={id:2,username:'John'};
-let user3:User={id:3, username: 'Jane_Doe',settings:{}};
-let user4: User = { id: 4, username: 'Opted_Out', settings: { notifications: false } };
-function isNotified(user:User):boolean{
+const userWithNotificationsOn:User= {id:1,username:'John_Doe', settings:{notifications:true}};
+const userWithNoSettings:User={id:2,username:'John'};
+const userWithEmptySettings:User={id:3, username: 'Jane_Doe',settings:{}};
+const userOptedOut: User = { id: 4, username: 'Opted_Out', settings: { notifications: false } };
+function hasNotificationsEnabled(user:User):boolean{
 return user.settings?.notifications?? false;
 }
-console.log(user1.username, isNotified(user1));
-console.log(user2.username, isNotified(user2));
-console.log(user3.username, isNotified(user3));
-console.log(user4.username, isNotified(user4));
+console.log(userWithNotificationsOn.username, hasNotificationsEnabled(userWithNotificationsOn));
+console.log(userWithNoSettings.username, hasNotificationsEnabled(userWithNoSettings));
+console.log(userWithEmptySettings.username, hasNotificationsEnabled(userWithEmptySettings));
+console.log(userOptedOut.username, hasNotificationsEnabled(userOptedOut));
